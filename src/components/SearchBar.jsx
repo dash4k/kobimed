@@ -5,7 +5,7 @@ import { getDrugByName } from '../data/drugs.js';
 
 import useInput from '../hooks/useInput.js';
 
-const SearchBar = ({ pathname, placeholder }) => {
+const SearchBar = ({ pathname, placeholder, ref }) => {
   const navigate = useNavigate();
 
   const [search, setSearch] = useInput('');
@@ -70,6 +70,7 @@ const SearchBar = ({ pathname, placeholder }) => {
           onChange={setSearch}
           placeholder={placeholder}
           className="w-full rounded-l-lg px-2 focus:outline-none font-headline-md"
+          ref={ref}
         />
         <button
           type='submit'
