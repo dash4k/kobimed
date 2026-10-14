@@ -21,6 +21,14 @@ const NavBar = ({ onValidRoutes }) => {
   const [mobileNav, setMobileNav] = React.useState(false);
   const [searchBar, setSearchBar] = React.useState(false);
 
+  const searchRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (searchBar) {
+      searchRef.current?.focus();
+    }
+  }, [searchBar]);
+
   const toggleSearchBar = () => {
     setSearchBar((prev) => !prev);
     setMobileNav(false);
@@ -109,7 +117,7 @@ const NavBar = ({ onValidRoutes }) => {
         }`}
       >
         <div className="w-full max-w-1/2 h-auto mx-auto pb-5">
-          <SearchBar pathname={location.pathname} placeholder={'Search'} />
+          <SearchBar pathname={location.pathname} placeholder={'Search'} ref={searchRef} />
         </div>
       </div>
     </div>
